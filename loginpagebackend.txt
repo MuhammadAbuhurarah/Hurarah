@@ -1,0 +1,75 @@
+
+(((((Backend lgany k liyee)))))
+(Sab sa phly stateful widget lena os k bd widget k uper override or class extends k andr ye likhna)
+
+(sab sa phly final os k bd name koi bhi Example:(Formkey)os k bad (equal=) phr  Globalkey<FormState>();)
+
+1)final formkey = Globalkey<FormState>();
+
+(phr os k bd is k nichee FirebaseAuth phr auth phr (equal=) phr FirebaseAuth.instance;)
+
+2)Firebase auth = FirebaseAuth.instance;
+
+(os k bd textfield ko column ma wrap kr dena jo login or password k liyee bnaee ho gi or phr column ko wrap krna hy widget ma or waha Form likh dena os k bd os k andr ye likhna Form ma (key: formkey)
+
+3)
+           Form(
+                key: formkey,
+                child: Column(
+                  children: [
+                    CustomTextfield(
+                      hint: 'Email',
+                      label: 'Enter Your Email',
+                      textEditingController: emailcontroller,
+                    ),
+                    SizedBox(
+                      height: 25.h,
+                    ),
+                    CustomTextfield(
+                        obscureText: true,
+                        hint: 'Password',
+                        label: 'Enter Your Password',
+                        textEditingController: passwordcontroller),
+                  ],
+                ),
+              ),
+
+(Os k bd sb sa nichee A jana jaha program khtm hotaa sb sa nichee jaha 2 kurley brackets hoti os ma sa 1 chor kr os k uper ye likhna)
+
+(os ma sb sa phly ik function bnana)
+
+(phly void os k bd login wala jo button ho ga os ko wrap krna ho ga gesture detector sa or os ko jo name dena ha move hony k liyee 
+wohi name dena ha yaha void k bd phir Brackets(){} phir kerly brakets k andr)
+
+(((auth.createUserWithEmailAndPassword))) phir bracket() phir bracket k andr email or password ka controller dena aysee
+ ((9email: emailcontroller.text.toString(),
+            password: passwordcontroller.text.toString() )))
+
+(controller k bd .text phr .toString() dono ma aysee hi krna hyn or phr bracket bnd )
+
+(os k bd .then bracketopen((value) =>Navigator.push(context,MaterialPageRoute(builder: (context) => or phr login ho kr ji screen pr jana os 
+ka name or phr bracketclose)
+
+(os k bd .onError(
+          (error, stackTrace) => print(error.toString()),
+        );
+or khtm 
+
+Example:
+
+void login() {
+    auth
+        .createUserWithEmailAndPassword(
+            email: emailcontroller.text.toString(),
+            password: passwordcontroller.text.toString())
+        .then((value) => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomeSrc())))
+        .onError(
+          (error, stackTrace) => print(error.toString()),
+        );
+  }
+}
+
+
+
+
